@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'django_extensions',
     'myapp',
 ]
 
@@ -121,3 +122,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true" #django 3.0부터 ASYNC_UNSAFE기능..
