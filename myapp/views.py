@@ -11,6 +11,7 @@ from rest_framework.decorators import action
 from rest_framework.generics import ListAPIView
 from rest_framework.filters import SearchFilter
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 class PostPageNumberPagination(PageNumberPagination):
     page_size = 2
@@ -37,6 +38,9 @@ class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = PostPageNumberPagination
+    permission_classes = [
+        IsAuthenticated,
+    ]
 
     filter_backends = [SearchFilter]
     search_fields = ['title']
@@ -56,7 +60,7 @@ class PostViewSet(ModelViewSet):
         return Response(serializer.data)
 
     def perform_create(self, serializer):
-        serializer.save(ip=self.request.META['REMOTE_ADDR'])
+        serializer.save(ip=self.request.META['REMOTE_ADDR'], author=self.request.user)
 
 
 

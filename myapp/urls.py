@@ -15,4 +15,5 @@ urlpatterns = [
     path('post/fbv/<int:pk>/', post_detail),
     path('',include(router.urls)),
     path('u/<slug:username>/', UserListAPIView.as_view()),
+
 ]
