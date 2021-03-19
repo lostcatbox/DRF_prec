@@ -9,7 +9,7 @@ decorator==4.4.2
 defusedxml==0.6.0
 Django==3.0.8
 django-extensions==3.0.2
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 entrypoints==0.3
 httpie==2.2.0
 idna==2.10
